@@ -33,6 +33,7 @@ function create_database {
 	else
 		echo "There is something wrong, creating database $database_name failed"
 	fi
+	cd ~/DBMS/$database_name 2>>/dev/null
 	tables_control_menu
 }
 
@@ -263,6 +264,7 @@ function select_column {
 	awk 'BEGIN{FS=","}{print NR,$1}' .$table_name
   	read -p "Enter column number : " col_num
   	awk 'BEGIN{FS=","}{print $'$col_num'}' $table_name'.csv'
+  	tables_control_menu
 }
 
 function delete_from_table {
